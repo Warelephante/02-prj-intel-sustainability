@@ -1,1 +1,206 @@
-/* Add your CSS here */
+/* Basic page styles */
+* {
+	box-sizing: border-box;
+}
+
+body {
+	margin: 0;
+	color: #172b4d;
+	background: #f4f8f7;
+	font-family: Arial, sans-serif;
+}
+
+/* Hero section */
+header {
+	min-height: 560px;
+	padding: 32px 24px 72px;
+	display: flex;
+	align-items: center;
+	text-align: center;
+	color: white;
+	background-image: linear-gradient(rgba(4, 44, 68, 0.64), rgba(4, 44, 68, 0.76)), url("img/background.jpg");
+	background-position: center;
+	background-size: cover;
+}
+
+/* Keep the hero content easy to read on wide screens */
+header > div {
+	width: 100%;
+	max-width: 800px;
+	margin: 0 auto;
+}
+
+header img {
+	width: 150px;
+	height: auto;
+	margin-bottom: 42px;
+	filter: brightness(0) invert(1);
+}
+
+h1 {
+	max-width: 720px;
+	margin: 0 auto 24px;
+	font-size: 56px;
+	line-height: 1.05;
+	letter-spacing: 1px;
+}
+
+header p {
+	max-width: 650px;
+	margin: 0 auto;
+	font-size: 20px;
+	line-height: 1.6;
+}
+
+/* Keep the milestones in one row that can be explored from left to right. */
+.timeline {
+	display: flex;
+	gap: 24px;
+	overflow-x: auto;
+	padding: 56px 32px 32px;
+	background: #e6f0ee;
+	scroll-padding-inline: 32px;
+	scroll-snap-type: x proximity;
+}
+
+.timeline-card {
+	flex: 0 0 calc((100% - 72px) / 4);
+	position: relative;
+	padding: 24px;
+	color: #172b4d;
+	background: white;
+	border-top: 5px solid #00a88f;
+	overflow: hidden;
+	/*box-shadow: 0 8px 20px rgba(23, 43, 77, 0.12);*/
+	scroll-snap-align: start;
+	transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+/* Keep the text overlay tied to the image at every card size. */
+.timeline-media {
+	position: relative;
+	margin: 0 -24px;
+}
+
+.timeline-media img {
+	display: block;
+	width: 100%;
+	aspect-ratio: 16 / 9;
+	height: auto;
+	object-fit: cover;
+}
+
+.timeline-media p {
+  font-size: 16px;
+	position: absolute;
+	inset: 0;
+	margin: 0;
+	padding: 16px;
+	color: white;
+	background: rgba(4, 44, 68, 0.9);
+	overflow-y: auto;
+	opacity: 0;
+	visibility: hidden;
+	transition: opacity 0.2s ease;
+}
+
+.timeline-card:hover p,
+.timeline-card:focus-within p {
+	opacity: 1;
+	visibility: visible;
+}
+
+.timeline-card:hover {
+	transform: translateY(-6px);
+	box-shadow: 0 14px 26px rgba(23, 43, 77, 0.18);
+}
+
+.timeline-card h2 {
+	margin: 0 0 8px;
+	color: #0071c5;
+	font-size: 34px;
+}
+
+.timeline-card h3 {
+	min-height: 48px;
+	margin: 0 0 18px;
+	font-size: 21px;
+}
+
+.timeline-card img {
+	margin: 0;
+}
+
+.timeline-media p {
+	line-height: 1.6;
+}
+
+body > p {
+	margin: 0;
+	padding: 20px 24px 28px;
+	color: #526581;
+	text-align: center;
+}
+
+/* Make the hero comfortable to read on smaller screens */
+@media (max-width: 1100px) and (min-width: 801px) {
+	.timeline-card {
+		flex-basis: calc((100% - 24px) / 2);
+	}
+
+  .timeline-media p {
+    font-size: 20px;
+  }
+}
+
+@media (max-width: 1300px) and (min-width: 1101px) {
+	.timeline-card {
+		flex-basis: calc((100% - 36px) / 3);
+	}
+
+  .timeline-media p {
+    font-size: 18px;
+  }
+}
+
+@media (max-width: 800px) {
+	header {
+		min-height: 500px;
+		padding: 28px 20px 56px;
+	}
+
+  .timeline-media p {
+    font-size: 24px;
+  }
+
+	header img {
+		width: 125px;
+		margin-bottom: 32px;
+	}
+
+	h1 {
+		font-size: 40px;
+	}
+
+	header p {
+		font-size: 17px;
+	}
+
+	.timeline {
+		flex-direction: column;
+		gap: 16px;
+		overflow-x: visible;
+		padding: 40px 20px 24px;
+		scroll-padding-inline: 20px;
+		scroll-snap-type: none;
+	}
+
+	.timeline-card {
+		flex-basis: auto;
+		padding: 20px;
+	}
+
+	.timeline-media {
+		margin: 0 -20px;
+	}
+}
